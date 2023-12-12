@@ -1,10 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Task } from '../task';
 
-export interface Task {
-  title: string;
-  description: string;
-}
+
 
 @Component({
   selector: 'app-task',
@@ -18,10 +16,11 @@ export interface Task {
 
 export class TaskComponent{
 
-  public task_title = 'hello'
-  public task_description = 'description'
+  // defining some defaults so TypeScript doesn't complain
+  // we could probably manage this better in the Task definition in task.ts
+  @Input({required: true}) task_data: Task = {id: 0, title: '<none>', description: '<none>'}; 
 
   constructor() {
-
+    
   }
 }
