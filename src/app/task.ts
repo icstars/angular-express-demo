@@ -1,5 +1,6 @@
 export interface Task {
-    id: number;
+    // making the ID optional
+    id?: number;
     title: string;
     description: string;
 }

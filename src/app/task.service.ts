@@ -28,4 +28,14 @@ export class TaskService {
     .pipe(tap(_ => console.log(_)))
     return result;
   }
+
+  // not to brag but I did this in one try!
+  // no flailing with the previous stuff
+  // it gets easier - once we establish a pattern
+  submitTask(task: Task) {
+    console.log("task submitted:")
+    console.log(task);
+    let result = this.http.post('http://localhost:5000/api/tasks', task);
+    return result;
+  }
 }

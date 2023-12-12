@@ -1,0 +1,10 @@
+<h2>Add a task</h2>
+<!-- angular doesn't really Use form elements - a lot of front-end frameworks don't -->
+<!-- it' a good idea for accessibility reasons -->
+<form>
+    <label for="title">Task title:</label>
+    <input id="title" [(ngModel)] = "task.title" name="title" placeholder="Title"><br>
+    <label for="description">Task description:</label>
+    <input id="description" [(ngModel)] = "task.description" name="description" placeholder="Description"><br>
+    <button (click)="submitTask()">Submit task</button>
+</form>
