@@ -30,7 +30,7 @@ export class TaskComponent{
   deleteTask() {
     console.log(`clicked delete for task ID ${this.task_data.id}`);
     this.deleteTaskEvent.emit(this.task_data.id);
-    document.getElementById(`task_${this.task_data.id}`)?.remove()
+    document.getElementById(`task_${this.task_data.id}`)?.remove();
     
   }
 }
