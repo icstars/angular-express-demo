@@ -28,6 +28,12 @@ db.connect((err) => {
 app.use(bodyParser.json());
 app.use(cors({origin: 'http://localhost:4200'}));
 
+// debug code I was using to see if the request was coming in or not
+// app.use(function (req, res, next) {
+//   console.log(req);
+//   next()
+// })
+
 // CRUD routes
 // Create (POST)
 app.post('/api/tasks', (req, res) => {
@@ -48,13 +54,11 @@ app.post('/api/tasks', (req, res) => {
 // Read (GET)
 app.get('/api/tasks', (req, res) => {
   const query = 'SELECT * FROM tasks';
-  console.log('getting');
   db.query(query, (err, results) => {
     if (err) {
       console.error('Error retrieving tasks:', err);
       res.status(500).json({ error: 'Error retrieving tasks' });
     } else {
-      console.log(results);
       res.json(results);
     }
   });
@@ -80,7 +84,7 @@ app.put('/api/tasks/:id', (req, res) => {
 app.delete('/api/tasks/:id', (req, res) => {
   const taskId = req.params.id;
   const query = 'DELETE FROM tasks WHERE id = ?';
-
+  console.log("received delete")
   db.query(query, [taskId], (err, result) => {
     if (err) {
       console.error('Error deleting task:', err);

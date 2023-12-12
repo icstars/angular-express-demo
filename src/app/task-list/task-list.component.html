@@ -1,5 +1,6 @@
 <h1>Tasks</h1>
 
 <div *ngFor="let task of tasks">
-    <app-task [task_data] = task></app-task>
+    <app-task [task_data] = task (deleteTaskEvent)="deleteTask($event)" id = "task_{{task.id}}"></app-task>
+    <!-- need this ID to handle deletion -->
 </div>

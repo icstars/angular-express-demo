@@ -14,6 +14,7 @@ import { TaskComponent } from '../task/task.component';
 export class TaskListComponent {
   
   tasks: Task[] = [];
+  
 
   constructor(private taskService: TaskService) {
 
@@ -28,8 +29,18 @@ export class TaskListComponent {
   getAllTasks() {
     this.taskService.getTasks().subscribe(
       tasks => this.tasks = tasks 
-    )
-    
+    ) 
+  }
+
+  deleteTask(taskID: number) {
+    // you have to subscribe, even if we're not getting any data "back" -
+    // otherwise it doesn't actually execute
+    // there are reasons to not call .subscribe() immediately, maybe?
+    // a real-world implementation would really need to get a response back
+    // in case the thing couldn't be deleted - database down, item deleted by
+    // someone else already, etc.
+    // you would do that based on the HTTP status code
+    this.taskService.deleteTask(taskID).subscribe();
   }
 
 }
