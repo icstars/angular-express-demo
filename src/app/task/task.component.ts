@@ -23,4 +23,8 @@ export class TaskComponent{
   constructor() {
     
   }
+
+  deleteTask() {
+    console.log(`clicked delete for task ID ${this.task_data.id}`)
+  }
 }
